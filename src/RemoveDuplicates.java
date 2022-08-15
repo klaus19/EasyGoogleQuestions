@@ -8,20 +8,16 @@ import java.util.Stack;
 public class RemoveDuplicates {
 
     public int removeDuplicates(int[] nums) {
+        Stack<Integer>st = new Stack<>();
+        int first = st.push(nums[0]);
 
-         int l=0;
-         int w=nums[0];
-
-         for (int i=1;i<nums.length;i++){
-             Stack<Integer>st = new Stack<>();
-             if (nums[i]!=w){
-                 st.push(nums[i]);
-                 w++;
-             }else {
-                 st.pop();
-             }
-         }
-         return w;
+      //  while (!st.isEmpty())
+        for (int i=1;i<nums.length;i++){
+            if (st.peek()==nums[i] && nums[i]==first){
+                st.remove(nums[i]);
+            }
+        }
+        return st.size();
     }
 
     public static void main(String[] args) {
